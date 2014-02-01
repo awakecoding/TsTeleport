@@ -98,10 +98,10 @@ Exit 1
     </PreBuildEvent>
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_WIN32_WINNT=0x0500;REGISTER_PROXY_DLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <RegisterOutput>true</RegisterOutput>
+      <RegisterOutput>false</RegisterOutput>
       <AdditionalDependencies>kernel32.lib;rpcns4.lib;rpcrt4.lib;oleaut32.lib;uuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>TsTeleportPS.def</ModuleDefinitionFile>
     </Link>
@@ -141,6 +141,9 @@ Exit 1
 </Command>
       <Message>Checking for required files</Message>
     </PreBuildEvent>
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dlldata.c" />

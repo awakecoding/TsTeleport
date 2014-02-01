@@ -35,4 +35,3 @@ STDAPI DllUnregisterServer(void)
 	HRESULT hr = _AtlModule.DllUnregisterServer();
 	return hr;
 }
-
