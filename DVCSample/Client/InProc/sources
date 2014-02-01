@@ -1,0 +1,57 @@
+!if 0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+!endif
+!if 0
+Use of this sample source code is subject to the terms of the Microsoft
+license agreement under which you licensed this sample source code. If
+you did not accept the terms of the license agreement, you are not
+authorized to use this sample source code. For the terms of the license,
+please see the license agreement between you and Microsoft or, if applicable,
+see the LICENSE.RTF on your install media or the root of your tools installation.
+THE SAMPLE SOURCE CODE IS PROVIDED "AS IS", WITH NO WARRANTIES OR INDEMNITIES.
+!endif
+
+TARGETNAME=DVCSample
+TARGETTYPE=DYNLINK
+TARGETDEFNAME=$(TARGETNAME)
+DEFFILE=$(TARGETNAME).def
+RCADDNULL=1
+
+RELEASETYPE=OAK
+WINCEOEM=1
+
+DLLENTRY=_DllMainCRTStartup
+
+IDL_TYPE=OLE
+WINCEATL=1
+
+CDEFINES = $(CDEFINES) -DOS_WINCE
+
+INCLUDES=                                               \
+    $(_WINCEROOT)\public\rdp\sdk\inc;                   \
+    $(_WINCEROOT)\public\common\sdk\inc;                \
+    $(_WINCEROOT)\public\common\oak\inc;                \
+    $(_WINCEROOT)\public\ie7\sdk\inc;                   \
+    
+SOURCES=             \
+    DVCSample.idl    \
+    DVCSample_i.c    \
+    DVCSample.cpp    \
+    Plugin.cpp       \
+    
+TARGETLIBS =                                                 \
+    $(TARGETLIBS)                                            \
+    $(_PUBLICROOT)\rdp\oak\lib\$(_CPUINDPATH)\cecommon.lib   \
+    $(_PUBLICROOT)\rdp\oak\lib\$(_CPUINDPATH)\cryptlib.lib   \
+    $(SG_OUTPUT_SDKLIB)\coredll.lib                          \
+    $(SG_OUTPUT_SDKLIB)\ole32.lib                            \
+    $(SG_OUTPUT_SDKLIB)\oleaut32.lib                         \
+    $(SG_OUTPUT_SDKLIB)\uuid.lib                             \
+    $(SG_OUTPUT_SDKLIB)\ws2.lib                              \
+    $(SG_OUTPUT_SDKLIB)\coredll.lib                          \
+    $(SG_OUTPUT_SDKLIB)\crypt32.lib                          \
+    $(SG_OUTPUT_SDKLIB)\iphlpapi.lib                         \
+    $(_PUBLICROOT)\common\oak\lib\$(_CPUINDPATH)\rsa32.lib   \
+        
+
+        
