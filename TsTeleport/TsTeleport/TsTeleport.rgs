@@ -1,0 +1,17 @@
+HKCU
+{
+	Software
+	{
+		Classes
+		{
+			NoRemove AppID
+			{
+				'%APPID%' = s 'TsTeleport'
+				'TsTeleport.DLL'
+				{
+					val AppID = s '%APPID%'
+				}
+			}
+		}
+	}
+}

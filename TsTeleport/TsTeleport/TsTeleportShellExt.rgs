@@ -1,0 +1,21 @@
+HKCR
+{
+	.TsTeleport = s 'CLSID\{B5D2B692-04A4-413C-AD69-86960DAB8111}'
+
+	NoRemove CLSID
+	{
+		ForceRemove {B5D2B692-04A4-413C-AD69-86960DAB8111} = s 'Ts Teleport ShellExt'
+		{
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Free'
+			}
+			val NeverShowExt = s ''
+			DefaultIcon = s 'mstsc.exe,0'
+			shellex
+			{
+				DropHandler = s '{B5D2B692-04A4-413C-AD69-86960DAB8111}'
+			}
+		}
+	}
+}

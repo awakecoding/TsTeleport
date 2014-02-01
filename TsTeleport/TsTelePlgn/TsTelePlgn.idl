@@ -1,0 +1,36 @@
+// TsTelePlgn.idl : IDL source for TsTelePlgn
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TsTelePlgn.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(5B6AEF7A-2E89-4007-B45D-061E0BB2E848),
+	dual,
+	nonextensible,
+	helpstring("ITsClientPlgn Interface"),
+	pointer_default(unique)
+]
+interface ITsClientPlgn : IDispatch{
+};
+[
+	uuid(7DBAEC14-F8EB-4C3A-925F-5507AFF7EC6E),
+	version(1.0),
+	helpstring("TsTelePlgn 1.0 Type Library")
+]
+library TsTelePlgnLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(0350DF61-30CF-451B-B292-3CE3A330F958),
+		helpstring("TsClientPlgn Class")
+	]
+	coclass TsClientPlgn
+	{
+		[default] interface ITsClientPlgn;
+	};
+};

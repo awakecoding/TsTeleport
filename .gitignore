@@ -1,0 +1,12 @@
+Debug/
+DebugPS/
+Release/
+ReleasePS/
+
+*.sdf
+*.suo
+*.user
+*.filters
+*.opensdf
+
+

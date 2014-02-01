@@ -1,0 +1,49 @@
+HKCR
+{
+	CLSID
+	{
+		TsTelePlgn.TsClientPlgn.1 = s 'TsClientPlgn Class'
+		{
+			CLSID = s '{0350DF61-30CF-451B-B292-3CE3A330F958}'
+		}
+		TsTelePlgn.TsClientPlgn = s 'TsClientPlgn Class'
+		{
+			CLSID = s '{0350DF61-30CF-451B-B292-3CE3A330F958}'
+			CurVer = s 'TsTelePlgn.TsClientPlgn.1'
+		}
+		ForceRemove {0350DF61-30CF-451B-B292-3CE3A330F958} = s 'TsClientPlgn Class'
+		{
+			ProgID = s 'TsTelePlgn.TsClientPlgn.1'
+			VersionIndependentProgID = s 'TsTelePlgn.TsClientPlgn'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Free'
+			}
+			'TypeLib' = s '{7DBAEC14-F8EB-4C3A-925F-5507AFF7EC6E}'
+		}		
+	}		
+}
+
+HKCU
+{ 
+	Software
+	{
+		Microsoft
+		{
+			'Terminal Server Client'
+			{
+				Default
+				{
+					AddIns
+					{
+						TsTelePlgn
+						{
+							val Name = s '{0350DF61-30CF-451B-B292-3CE3A330F958}'
+						}
+					}
+				}
+			}
+		}
+	}
+}

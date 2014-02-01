@@ -1,0 +1,17 @@
+HKCU
+{
+	Software
+	{
+		Classes
+		{
+			NoRemove AppID
+			{
+				'%APPID%' = s 'TsTelePlgn'
+				'TsTelePlgn.DLL'
+				{
+					val AppID = s '%APPID%'
+				}
+			}
+		}
+	}
+}

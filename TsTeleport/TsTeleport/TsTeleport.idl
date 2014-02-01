@@ -1,0 +1,36 @@
+// TsTeleport.idl : IDL source for TsTeleport
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TsTeleport.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(D846F568-ACA8-42AA-9A03-452DBB23A393),
+	dual,
+	nonextensible,
+	helpstring("ITsTeleportShellExt Interface"),
+	pointer_default(unique)
+]
+interface ITsTeleportShellExt : IDispatch{
+};
+[
+	uuid(19C57C47-426A-42EE-A31D-4B5C4BA8DBB1),
+	version(1.0),
+	helpstring("TsTeleport 1.0 Type Library")
+]
+library TsTeleportLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(B5D2B692-04A4-413C-AD69-86960DAB8111),
+		helpstring("TsTeleportShellExt Class")
+	]
+	coclass TsTeleportShellExt
+	{
+		[default] interface ITsTeleportShellExt;
+	};
+};
