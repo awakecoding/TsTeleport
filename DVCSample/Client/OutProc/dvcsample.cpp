@@ -27,13 +27,7 @@ public :
 
 CDVCsampleModule _AtlModule;
 
-int WINAPI WinMain(
-    HINSTANCE hInstance,
-    HINSTANCE hPrevInstance,
-    LPTSTR lpszCmdLine,
-    int nCmdShow
-    )
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpszCmdLine, int nCmdShow)
 {
-
-    return _AtlModule.WinMain(nCmdShow);
+	return _AtlModule.WinMain(nCmdShow);
 }

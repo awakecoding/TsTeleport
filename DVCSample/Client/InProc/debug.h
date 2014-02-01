@@ -32,7 +32,7 @@ void DebugPrint(__in_z LPWSTR fmt, ...)
 
     size_t Len;
     hr = StringCchLength(Buffer,SIZE, &Len);
-    ASSERT(SUCCEEDED(hr));
+    assert(SUCCEEDED(hr));
 
     va_list argptr;
     va_start(argptr, fmt);
@@ -43,7 +43,7 @@ void DebugPrint(__in_z LPWSTR fmt, ...)
         argptr);
 
     hr = StringCchLength(Buffer,SIZE, &Len);
-    ASSERT(SUCCEEDED(hr));
+    assert(SUCCEEDED(hr));
 
     if (Len < SIZE-1)
     {
