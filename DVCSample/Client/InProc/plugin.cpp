@@ -12,7 +12,6 @@
 //
 #include    "stdafx.h"
 #include    "Plugin.h"
-#include    "Debug.h"
 
 // Class CSampleListenerCallback implements IWTSListenerCallback interface
 
@@ -49,35 +48,21 @@ public:
         COM_INTERFACE_ENTRY(IWTSVirtualChannelCallback)
     END_COM_MAP()
 
-    VOID SetChannel( IWTSVirtualChannel *pChannel )
-    {
-        m_ptrChannel = pChannel;
-    }
+VOID SetChannel(IWTSVirtualChannel* pChannel)
+{
+	m_ptrChannel = pChannel;
+}
 
-// IWTSVirtualChannelCallback  Methods
-/*
- *  Called whenever a full message from the server is received
- *  The message is fully reassembled and has the exact size
- *  as the Write() call on the server
- */
-    HRESULT STDMETHODCALLTYPE
-    OnDataReceived(
-        ULONG cbSize,
-        __in_bcount( cbSize ) BYTE *pBuffer
-    )
-    {
-        TRC("DVCSample:Looping back %d bytes received from Server ",cbSize);
-        return m_ptrChannel->Write( cbSize, pBuffer, NULL );
+HRESULT STDMETHODCALLTYPE OnDataReceived(ULONG cbSize, __in_bcount( cbSize ) BYTE *pBuffer)
+{
+	return m_ptrChannel->Write(cbSize, pBuffer, NULL);
+}
 
-    }
+HRESULT STDMETHODCALLTYPE OnClose()
+{
+	return m_ptrChannel->Close();
+}
 
-/*
- *  The channel is disconnected, all Write() calls will fail
- *  no more incomming data is expected.
- */
-    HRESULT STDMETHODCALLTYPE
-    OnClose()
-    {   return m_ptrChannel->Close(); }
 };
 
 //IWTSPlugin
@@ -102,11 +87,6 @@ CDVCSamplePlugin::Initialize(
     CHECK_QUIT_HR( "CSampleListenerCallback::CreateInstance" );
     ptrListenerCallback = pListenerCallback;
 
-    /* This function returns an instance of a listener object that
-     * listens on a specific endpoint. In this case "DVCSmpl" is the
-     * endpoint name on which the listener will listen.
-     */
-    TRC("DVCSample: Listener DVCSmpl Created");
     hr = pChannelMgr->CreateListener( "DVCSmpl", 0, (CSampleListenerCallback *)ptrListenerCallback, &ptrListener );
     CHECK_QUIT_HR( "CreateListener" );
 
@@ -137,9 +117,8 @@ CSampleListenerCallback::OnNewChannelConnection(
     CComPtr<CSampleChannelCallback> ptrCallback;
 
     *pbAccept = FALSE;
-    TRC("DVCSample:Request for new channel connection from the server");
-    hr = CComObject<CSampleChannelCallback>::CreateInstance( &pCallback );
-    CHECK_QUIT_HR( "CSampleChannelCallback::CreateInstance" );
+    hr = CComObject<CSampleChannelCallback>::CreateInstance(&pCallback);
+    CHECK_QUIT_HR("CSampleChannelCallback::CreateInstance");
     ptrCallback = pCallback;
 
     ptrCallback->SetChannel( pChannel );
